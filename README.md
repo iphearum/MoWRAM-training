@@ -1,58 +1,117 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel Portfolio Demo
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A teaching project that turns a static portfolio template into reusable Laravel Blade views. It also includes a profile-management example powered by server-side [Yajra DataTables](https://yajrabox.com/docs/laravel-datatables).
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Shared Blade layout, navigation, and footer partials
+- Home, resume, projects, and contact pages
+- Responsive Bootstrap-based portfolio design
+- Profile management table with AJAX loading, search, sorting, and pagination
+- Status badges and example action buttons rendered by Laravel
+- SQLite configuration for a lightweight local setup
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+> [!NOTE]
+> The profiles are currently a hard-coded teaching dataset in `routes/web.php`. The Add, View, Edit, and Delete controls are visual placeholders and do not persist data.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Requirements
 
-## Learning Laravel
+- PHP 8.3 or newer
+- Composer
+- Node.js and npm
+- SQLite PHP extension
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Internet access is also needed in the browser because Bootstrap, Bootstrap Icons, jQuery, DataTables, and Google Fonts are loaded from CDNs.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Installation
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+Clone the repository, enter the project directory, and run:
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+composer install
+cp .env.example .env
+php artisan key:generate
+touch database/database.sqlite
+php artisan migrate
+npm install
+npm run build
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+On Windows PowerShell, replace the `cp` and `touch` commands with:
 
-## Contributing
+```powershell
+Copy-Item .env.example .env
+New-Item database/database.sqlite -ItemType File
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Start the application:
 
-## Code of Conduct
+```bash
+php artisan serve
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Then open <http://127.0.0.1:8000>.
 
-## Security Vulnerabilities
+For the combined development server, queue worker, log viewer, and Vite watcher, use:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+composer run dev
+```
+
+## Application routes
+
+| URL | Route name | Purpose |
+| --- | --- | --- |
+| `/` | `home` | Portfolio landing page |
+| `/resume` | `resume` | Experience and education |
+| `/projects` | `projects` | Example project cards |
+| `/contact` | `contact` | Contact form layout |
+| `/manage/profiles` | `manage.profiles` | DataTables management screen |
+| `/manage/profiles/data` | `manage.profiles.data` | JSON endpoint used by DataTables |
+
+## Project structure
+
+```text
+routes/web.php                         Page routes and sample profile data
+resources/views/layouts/app.blade.php Shared HTML layout
+resources/views/partials/              Navigation and footer
+resources/views/pages/                 Portfolio and management pages
+public/css/styles.css                  Portfolio theme styles
+public/js/scripts.js                   Theme JavaScript
+public/assets/                         Images and favicon
+docs/                                  Step-by-step classroom guides
+```
+
+## Learning guides
+
+- [Build a static portfolio with Blade](docs/build-static-portfolio-with-blade.md)
+- [Add profile management with DataTables](docs/add-profile-management-datatable.md)
+- [Printable Blade portfolio guide](docs/build-static-portfolio-with-blade.pdf)
+
+## Useful commands
+
+```bash
+# Run the test suite
+composer test
+
+# Format PHP code
+vendor/bin/pint
+
+# List application routes
+php artisan route:list --except-vendor
+
+# Rebuild front-end assets
+npm run build
+```
+
+## Customizing the demo
+
+- Edit portfolio content in `resources/views/pages`.
+- Change the shared header and footer in `resources/views/partials`.
+- Update the theme in `public/css/styles.css`.
+- Replace `public/assets/profile.png` with a different profile image.
+- Replace the sample array in `routes/web.php` with an Eloquent query when introducing database-backed profiles.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project uses the open-source Laravel framework, which is licensed under the [MIT License](https://opensource.org/licenses/MIT).
