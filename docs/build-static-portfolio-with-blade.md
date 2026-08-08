@@ -1,5 +1,7 @@
 # Build a Static Portfolio Layout in Laravel Blade
 
+[Overview](../README.md) · [Lessons](README.md) · [License](../LICENSE)
+
 ## Goal
 
 Build a Laravel demo app from the existing `staticWeb` portfolio template. Students will learn how to split a static HTML website into:

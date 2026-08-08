@@ -1,5 +1,7 @@
 # Laravel Portfolio Demo
 
+**Overview** · [Lessons](docs/README.md) · [License](LICENSE)
+
 A teaching project that turns a static portfolio template into reusable Laravel Blade views. It also includes a profile-management example powered by server-side [Yajra DataTables](https://yajrabox.com/docs/laravel-datatables).
 
 ## Features
@@ -84,6 +86,8 @@ docs/                                  Step-by-step classroom guides
 
 ## Learning guides
 
+Browse the [lessons index](docs/README.md), or open a guide directly:
+
 - [Build a static portfolio with Blade](docs/build-static-portfolio-with-blade.md)
 - [Add profile management with DataTables](docs/add-profile-management-datatable.md)
 - [Printable Blade portfolio guide](docs/build-static-portfolio-with-blade.pdf)
@@ -114,4 +118,4 @@ npm run build
 
 ## License
 
-This project uses the open-source Laravel framework, which is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+This project is available under the [MIT License](LICENSE).

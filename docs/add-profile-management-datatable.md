@@ -1,5 +1,7 @@
 # Add Profile Management with Laravel DataTables
 
+[Overview](../README.md) · [Lessons](README.md) · [License](../LICENSE)
+
 ## Goal
 
 Add a management page to the Laravel portfolio demo using the PHP package `yajra/laravel-datatables-oracle`. The page loads sample profile data through an AJAX route, then DataTables handles search, sort, pagination, and page length.
